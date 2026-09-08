@@ -103,3 +103,124 @@ def remove_student(student_id):
         return True
     print(f"Student ID {student_id} not found.")
     return False
+
+def check_in(student_id, course_id, timestamp=None):
+    """Records a student attendance check-in."""
+    if timestamp is None:
+        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    
+    student = next((s for s in app_data["students"] if s["id"] == student_id), None)
+    if not student:
+        print(f"Check-in failed: Student ID {student_id} does not exist.")
+        return False
+
+    record = {
+        "student_id": student_id,
+        "course_id": course_id,
+        "timestamp": timestamp
+    }
+    app_data["attendance"].append(record)
+    print(f"Checked in Student ID {student_id} for course '{course_id}'.")
+    return True
+
+def print_student_card(student_id):
+    """Generates a text-based physical student card file."""
+    student = next((s for s in app_data["students"] if s["id"] == student_id), None)
+    if not student:
+        print(f"Cannot print card: Student ID {student_id} not found.")
+        return False
+
+    card_content = (
+        "========================================\n"
+        "         MUSIC SCHOOL STUDENT CARD      \n"
+        "========================================\n"
+        f" ID:         {student['id']}\n"
+        f" Name:       {student['name']}\n"
+        f" Instrument: {student['instrument']}\n"
+        "========================================"
+    )
+    
+    filename = f"student_card_{student_id}.txt"
+    with open(filename, "w") as f:
+        f.write(card_content)
+    
+    print(f"Card successfully exported to '{filename}'.")
+    return True
+
+def main():
+    load_data()  # Auto-loads data on boot
+
+    while True:
+        print("\n--- Music School Management System (PST2) ---")
+        print("1. Add Teacher")
+        print("2. Update Teacher")
+        print("3. Remove Teacher")
+        print("4. Add Student")
+        print("5. Update Student")
+        print("6. Remove Student")
+        print("7. Student Check-in")
+        print("8. Print Student Card")
+        print("9. Exit")
+
+        choice = input("Select an option (1-9): ").strip()
+
+        if choice == "1":
+            name = input("Enter teacher name: ")
+            inst = input("Enter instrument: ")
+            add_teacher(name, inst)
+            save_data()[cite: 1]
+
+        elif choice == "2":
+            t_id = int(input("Enter teacher ID: "))
+            name = input("New name (leave blank to skip): ")
+            inst = input("New instrument (leave blank to skip): ")
+            updates = {}
+            if name: updates["name"] = name
+            if inst: updates["instrument"] = inst
+            update_teacher(t_id, **updates)
+            save_data()[cite: 1]
+
+        elif choice == "3":
+            t_id = int(input("Enter teacher ID to remove: "))
+            remove_teacher(t_id)
+            save_data()[cite: 1]
+
+        elif choice == "4":
+            name = input("Enter student name: ")
+            inst = input("Enter instrument: ")
+            add_student(name, inst)
+            save_data()[cite: 1]
+
+        elif choice == "5":
+            s_id = int(input("Enter student ID: "))
+            name = input("New name (leave blank to skip): ")
+            inst = input("New instrument (leave blank to skip): ")
+            updates = {}
+            if name: updates["name"] = name
+            if inst: updates["instrument"] = inst
+            update_student(s_id, **updates)
+            save_data()[cite: 1]
+
+        elif choice == "6":
+            s_id = int(input("Enter student ID to remove: "))
+            remove_student(s_id)
+            save_data()[cite: 1]
+
+        elif choice == "7":
+            s_id = int(input("Enter student ID: "))
+            c_id = input("Enter course ID: ")
+            check_in(s_id, c_id)
+            save_data()[cite: 1]
+
+        elif choice == "8":
+            s_id = int(input("Enter student ID to print card: "))
+            print_student_card(s_id)
+
+        elif choice == "9":
+            print("Exiting application. Goodbye!")
+            break
+        else:
+            print("Invalid selection. Try again.")
+
+if __name__ == "__main__":
+    main()
