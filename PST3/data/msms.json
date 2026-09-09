@@ -1,0 +1,60 @@
+{
+    "next_student_id": 3,
+    "next_teacher_id": 3,
+    "next_course_id": 3,
+    "students": [
+        {
+            "user_id": 1,
+            "name": "Alice Smith",
+            "email": "alice@example.com",
+            "grade_level": "Beginner",
+            "enrolled_course_ids": [101]
+        },
+        {
+            "user_id": 2,
+            "name": "Bob Jones",
+            "email": "bob@example.com",
+            "grade_level": "Intermediate",
+            "enrolled_course_ids": [102]
+        }
+    ],
+    "teachers": [
+        {
+            "user_id": 1,
+            "name": "Clara Oswald",
+            "email": "clara@musicschool.com",
+            "instrument_specialty": "Piano"
+        },
+        {
+            "user_id": 2,
+            "name": "David Bowie",
+            "email": "david@musicschool.com",
+            "instrument_specialty": "Guitar"
+        }
+    ],
+    "courses": [
+        {
+            "course_id": 101,
+            "title": "Piano Basics",
+            "instrument": "Piano",
+            "teacher_id": 1,
+            "enrolled_student_ids": [1],
+            "lessons": []
+        },
+        {
+            "course_id": 102,
+            "title": "Advanced Guitar",
+            "instrument": "Guitar",
+            "teacher_id": 2,
+            "enrolled_student_ids": [2],
+            "lessons": []
+        }
+    ],
+    "attendance": [
+        {
+            "student_id": 1,
+            "course_id": 101,
+            "timestamp": "2026-09-09T10:00:00"
+        }
+    ]
+}

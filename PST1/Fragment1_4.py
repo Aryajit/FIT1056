@@ -21,6 +21,8 @@ def main():
             name = input("Enter student name: ")
             instrument = input("Enter instrument to enrol in: ")
             front_desk_register(name, instrument)
+            # Explanation: Prompts the user for student name and instrument, then delegates execution to front_desk_register to handle object creation and enrollment[cite: 1, 4].
+
         elif choice == '2':
             # TODO: Prompt for student ID (as an int) and instrument, then call front_desk_enrol.
             try:
@@ -29,17 +31,26 @@ def main():
                 front_desk_enrol(student_id, instrument)
             except ValueError:
                 print("Invalid ID. Please enter a number.")
+            # Explanation: Prompts for student ID and instrument; wraps ID parsing in a try-except block to catch invalid non-integer inputs gracefully before passing valid arguments to front_desk_enrol[cite: 1, 4].
+
         elif choice == '3':
             # TODO: Prompt for a search term, then call front_desk_lookup.
             term = input("Enter search term: ")
             front_desk_lookup(term)
+            # Explanation: Reads a search string from input and passes it to front_desk_lookup to search across both student and teacher records[cite: 1, 4].
+
         elif choice == '4':
             list_students()
+            # Explanation: Calls list_students to print all student records stored in runtime memory[cite: 1, 4].
+
         elif choice == '5':
             list_teachers()
+            # Explanation: Calls list_teachers to print all teacher records stored in runtime memory[cite: 1, 4].
+
         elif choice.lower() == 'q':
             print("Exiting program. Goodbye!")
             break
+            
         else:
             print("Invalid choice. Please try again.")
 

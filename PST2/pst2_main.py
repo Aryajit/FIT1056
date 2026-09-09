@@ -1,5 +1,6 @@
 import json
 import os
+from datetime import datetime
 
 # Global application state
 app_data = {
@@ -32,7 +33,7 @@ def save_data(path="msms.json"):
     except Exception as e:
         print(f"Error saving data: {e}")
 
-        # --- TEACHER CRUD ---
+# --- TEACHER CRUD ---
 
 def add_teacher(name, instrument):
     """Creates and adds a new teacher."""
@@ -168,53 +169,71 @@ def main():
             name = input("Enter teacher name: ")
             inst = input("Enter instrument: ")
             add_teacher(name, inst)
-            save_data()[cite: 1]
+            save_data()
 
         elif choice == "2":
-            t_id = int(input("Enter teacher ID: "))
-            name = input("New name (leave blank to skip): ")
-            inst = input("New instrument (leave blank to skip): ")
-            updates = {}
-            if name: updates["name"] = name
-            if inst: updates["instrument"] = inst
-            update_teacher(t_id, **updates)
-            save_data()[cite: 1]
+            try:
+                t_id = int(input("Enter teacher ID: "))
+                name = input("New name (leave blank to skip): ")
+                inst = input("New instrument (leave blank to skip): ")
+                updates = {}
+                if name: updates["name"] = name
+                if inst: updates["instrument"] = inst
+                update_teacher(t_id, **updates)
+                save_data()
+            except ValueError:
+                print("Invalid input! ID must be an integer.")
 
         elif choice == "3":
-            t_id = int(input("Enter teacher ID to remove: "))
-            remove_teacher(t_id)
-            save_data()[cite: 1]
+            try:
+                t_id = int(input("Enter teacher ID to remove: "))
+                remove_teacher(t_id)
+                save_data()
+            except ValueError:
+                print("Invalid input! ID must be an integer.")
 
         elif choice == "4":
             name = input("Enter student name: ")
             inst = input("Enter instrument: ")
             add_student(name, inst)
-            save_data()[cite: 1]
+            save_data()
 
         elif choice == "5":
-            s_id = int(input("Enter student ID: "))
-            name = input("New name (leave blank to skip): ")
-            inst = input("New instrument (leave blank to skip): ")
-            updates = {}
-            if name: updates["name"] = name
-            if inst: updates["instrument"] = inst
-            update_student(s_id, **updates)
-            save_data()[cite: 1]
+            try:
+                s_id = int(input("Enter student ID: "))
+                name = input("New name (leave blank to skip): ")
+                inst = input("New instrument (leave blank to skip): ")
+                updates = {}
+                if name: updates["name"] = name
+                if inst: updates["instrument"] = inst
+                update_student(s_id, **updates)
+                save_data()
+            except ValueError:
+                print("Invalid input! ID must be an integer.")
 
         elif choice == "6":
-            s_id = int(input("Enter student ID to remove: "))
-            remove_student(s_id)
-            save_data()[cite: 1]
+            try:
+                s_id = int(input("Enter student ID to remove: "))
+                remove_student(s_id)
+                save_data()
+            except ValueError:
+                print("Invalid input! ID must be an integer.")
 
         elif choice == "7":
-            s_id = int(input("Enter student ID: "))
-            c_id = input("Enter course ID: ")
-            check_in(s_id, c_id)
-            save_data()[cite: 1]
+            try:
+                s_id = int(input("Enter student ID: "))
+                c_id = input("Enter course ID: ")
+                check_in(s_id, c_id)
+                save_data()
+            except ValueError:
+                print("Invalid input! ID must be an integer.")
 
         elif choice == "8":
-            s_id = int(input("Enter student ID to print card: "))
-            print_student_card(s_id)
+            try:
+                s_id = int(input("Enter student ID to print card: "))
+                print_student_card(s_id)
+            except ValueError:
+                print("Invalid input! ID must be an integer.")
 
         elif choice == "9":
             print("Exiting application. Goodbye!")

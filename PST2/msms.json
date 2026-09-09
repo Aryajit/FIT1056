@@ -1,0 +1,29 @@
+{
+  "students": [
+    {
+      "id": "S001",
+      "name": "Alice Smith",
+      "enrolled_in": ["Piano", "Flute"]
+    },
+    {
+      "id": "S002",
+      "name": "Bob Jones",
+      "enrolled_in": ["Guitar"]
+    }
+  ],
+  "teachers": [
+    {
+      "id": 1,
+      "name": "Dr. Keys",
+      "speciality": "Piano"
+    },
+    {
+      "id": 2,
+      "name": "Ms. Fret",
+      "speciality": "Guitar"
+    }
+  ],
+  "attendance": [],
+  "next_student_id": 3,
+  "next_teacher_id": 3
+}
