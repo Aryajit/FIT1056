@@ -1,13 +1,7 @@
 {
-    "teachers": [
-        {
-            "id": 2,
-            "name": "Alice",
-            "instrument": "Guitar"
-        }
-    ],
+    "teachers": [],
     "students": [],
     "attendance": [],
-    "next_teacher_id": 3,
+    "next_teacher_id": 4,
     "next_student_id": 1
 }

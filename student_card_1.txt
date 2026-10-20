@@ -1,0 +1,8 @@
+===================================
+    MUSIC SCHOOL STUDENT CARD
+===================================
+ID          : 1
+Name        : Alice Smith
+Email       : alice@example.com
+Grade Level : Beginner
+===================================

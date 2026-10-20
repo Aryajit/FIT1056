@@ -1,3 +1,7 @@
+#TeacherUser(User): Inherits from User and adds a speciality attribute (e.g., "Piano", "Guitar").
+
+#Course: Represents a class offered by the school. Holds course_id, title, teacher_id, enrolled_student_ids, and lessons.
+
 from app.user import User
 
 class TeacherUser(User):
